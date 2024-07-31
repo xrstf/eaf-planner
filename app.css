@@ -28,8 +28,14 @@ dt {
 	margin-bottom: 0;
 }
 
-body > header {
+body > header, body > main {
 	padding-bottom: 0;
+}
+
+footer p {
+	text-align: center;
+	color: var(--pico-muted-color);
+	margin-bottom: 0;
 }
 
 .harvest.empty {
