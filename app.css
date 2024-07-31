@@ -98,6 +98,7 @@ tr.crop-turnip .name { background-image: url(images/crops/turnip.png); }
 tr.crop-wheat .name { background-image: url(images/crops/wheatstalk.png); }
 tr.crop-watermelon .name { background-image: url(images/crops/watermelon.png); }
 tr.crop-winterberry .name { background-image: url(images/crops/winterberry.png); }
+tr.crop-zulufruit .name { background-image: url(images/crops/zulufruit.png); }
 
 tr.harvest.refineable .refined-units {
 	background-repeat: none;

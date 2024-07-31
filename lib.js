@@ -184,6 +184,7 @@ const Crops = {
 	Wheat:         'wheat',
 	Watermelon:    'watermelon',
 	Winterberry:   'winterberry',
+	Zulufruit:     'zulufruit',
 };
 
 let CropNames = {};
@@ -213,6 +214,7 @@ CropNames[Crops.Turnip]        = "Turnip";
 CropNames[Crops.Wheat]         = "Wheat";
 CropNames[Crops.Watermelon]    = "Watermelon";
 CropNames[Crops.Winterberry]   = "Winterberry";
+CropNames[Crops.Zulufruit]     = "Zulufruit";
 
 const AllCrops = [
 	Crops.Blueberry,
@@ -241,6 +243,7 @@ const AllCrops = [
 	Crops.Wheat,
 	Crops.Watermelon,
 	Crops.Winterberry,
+	Crops.Zulufruit,
 ];
 
 let CropInfos = {};
@@ -271,6 +274,7 @@ CropInfos[Crops.Turnip]        = new Crop(36, 64, 0, 0, 5, 0, 1, [Seasons.Winter
 CropInfos[Crops.Wheat]         = new Crop(8, 3, 60, 2, 4, 0, 1, [Seasons.Spring, Seasons.Summer], Machines.Refiner);
 CropInfos[Crops.Watermelon]    = new Crop(100, 264, 0, 0, 11, 0, 1, [Seasons.Summer], null);
 CropInfos[Crops.Winterberry]   = new Crop(70, 40, 0, 0, 12, 6, 3, [Seasons.Winter], null);
+CropInfos[Crops.Zulufruit]     = new Crop(0, 860, 0, 0, 14, 7, 1, [Seasons.Spring, Seasons.Summer], null);
 
 ///////////////////////////////////////////
 // farming simulation

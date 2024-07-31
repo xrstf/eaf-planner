@@ -46,6 +46,10 @@
 
 		let totalHarvest = [];
 		AllCrops.forEach(function (cropIdentifier) {
+			if (!free && cropIdentifier == Crops.Zulufruit) {
+				return;
+			}
+
 			let crop = CropInfos[cropIdentifier];
 
 			// let the crop grow and collect the raw harvest
