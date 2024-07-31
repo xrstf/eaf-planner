@@ -1,0 +1,163 @@
+tr.harvest th, tr.harvest td {
+	text-align: right;
+}
+
+tr.harvest .name {
+	text-align: left;
+	font-weight: 600;
+}
+
+dt {
+	font-weight: bold;
+}
+
+.is-incomplete #notice { display: block; }
+.is-incomplete #tables { display: none; }
+
+.is-complete #notice { display: none; }
+.is-complete #tables { display: block; }
+
+#notice h4 {
+	text-align: center;
+	border: 2px solid var(--pico-ins-color);
+	border-radius: 0.5rem;
+	padding: 1rem;
+}
+
+#form {
+	margin-bottom: 0;
+}
+
+body > header {
+	padding-bottom: 0;
+}
+
+.harvest.empty {
+	display: none;
+}
+
+.harvest.empty td, .harvest.empty th {
+	color: var(--pico-muted-color);
+}
+
+td.gold small {
+	color: var(--pico-muted-color);
+}
+
+#results .raw-revenue,
+#results .refined-revenue {
+	display: none;
+}
+
+.colgroup {
+	border-left: var(--pico-border-width) solid var(--pico-table-border-color);
+}
+
+#results.show-revenue .raw-revenue,
+#results.show-revenue .refined-revenue {
+	display: table-cell;
+}
+
+thead th {
+	text-align: center;
+}
+
+tr.borderless th {
+	border-bottom: 0;
+}
+
+tr.harvest .name {
+	background-repeat: none;
+	background-position: left center;
+	padding-left: 53px;
+}
+
+tr.crop-blueberry .name { background-image: url(images/crops/blueberry.png); }
+tr.crop-carrot .name { background-image: url(images/crops/carrot.png); }
+tr.crop-cauliflower .name { background-image: url(images/crops/cauliflower.png); }
+tr.crop-chilipepper .name { background-image: url(images/crops/chilipepper.png); }
+tr.crop-corn .name { background-image: url(images/crops/corn.png); }
+tr.crop-daikon .name { background-image: url(images/crops/daikon.png); }
+tr.crop-donberry .name { background-image: url(images/crops/donberry.png); }
+tr.crop-eggplant .name { background-image: url(images/crops/eggplant.png); }
+tr.crop-fairyfruit .name { background-image: url(images/crops/fairyfruit.png); }
+tr.crop-honeydewmelon .name { background-image: url(images/crops/honeydewmelon.png); }
+tr.crop-kobo .name { background-image: url(images/crops/kobo.png); }
+tr.crop-kupiberry .name { background-image: url(images/crops/kupiberry.png); }
+tr.crop-lemon .name { background-image: url(images/crops/lemon.png); }
+tr.crop-onion .name { background-image: url(images/crops/onion.png); }
+tr.crop-potato .name { background-image: url(images/crops/potato.png); }
+tr.crop-pumpkin .name { background-image: url(images/crops/pumpkin.png); }
+tr.crop-rice .name { background-image: url(images/crops/ricestalk.png); }
+tr.crop-rockmelon .name { background-image: url(images/crops/rockmelon.png); }
+tr.crop-sourberry .name { background-image: url(images/crops/sourberry.png); }
+tr.crop-soybean .name { background-image: url(images/crops/soybean.png); }
+tr.crop-strawberry .name { background-image: url(images/crops/strawberry.png); }
+tr.crop-tomato .name { background-image: url(images/crops/tomato.png); }
+tr.crop-turnip .name { background-image: url(images/crops/turnip.png); }
+tr.crop-wheat .name { background-image: url(images/crops/wheatstalk.png); }
+tr.crop-watermelon .name { background-image: url(images/crops/watermelon.png); }
+tr.crop-winterberry .name { background-image: url(images/crops/winterberry.png); }
+
+tr.harvest.refineable .refined-units {
+	background-repeat: none;
+	background-position: right center;
+	padding-right: 50px;
+}
+
+tr.harvest.crop-blueberry .refined-units {
+	background-image: url(images/crops/blueberry-juice.png);
+}
+
+tr.harvest.crop-donberry .refined-units {
+	background-image: url(images/crops/donberry-juice.png);
+}
+
+tr.harvest.crop-corn .refined-units {
+	background-image: url(images/crops/corn-kernels.png);
+}
+
+tr.harvest.crop-rice .refined-units {
+	background-image: url(images/crops/rice.png);
+}
+
+tr.harvest.crop-soybean .refined-units {
+	background-image: url(images/crops/soymilk.png);
+}
+
+tr.harvest.crop-wheat .refined-units {
+	background-image: url(images/crops/flour.png);
+}
+
+.mature-time small, .repeat small {
+	padding-left: 2px;
+}
+
+.mature-time small {
+	color: green;
+}
+
+.repeat small {
+	color: red;
+}
+
+.gold {
+	background-repeat: none;
+	background-position: right center;
+	padding-right: 22px;
+	background-image: url(images/gold-small.png);
+}
+
+.tablesorter-header {
+	background-repeat: none;
+	background-position: right center;
+	padding-right: 22px;
+}
+
+.tablesorter-headerAsc {
+	background-image: url(images/sort-asc.png);
+}
+
+.tablesorter-headerDesc {
+	background-image: url(images/sort-desc.png);
+}

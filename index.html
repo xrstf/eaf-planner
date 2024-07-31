@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>Everafter Falls Farming Calculator</title>
+  <meta name="description" content="A pure HTML example, without dependencies." />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css" />
+  <link rel="stylesheet" href="app.css" />
+</head>
+
+<body>
+  <header class="container">
+    <hgroup>
+      <h1>Everafter Falls Farming Calculator</h1>
+      <p>Determine the optimal crops to grow for maximum profit.</p>
+    </hgroup>
+
+    <section id="form">
+      <form>
+        <div class="grid">
+          <div>
+            <div class="grid">
+              <div>
+                <h6>Start:</h6>
+                <form>
+                  <fieldset role="group">
+                    <select id="day" name="day" required>
+                      <option value="1">1st</option>
+                      <option value="2">2nd</option>
+                      <option value="3">3rd</option>
+                      <option value="4">4th</option>
+                      <option value="5">5th</option>
+                      <option value="6">6th</option>
+                      <option value="7">7th</option>
+                      <option value="8">8th</option>
+                      <option value="9">9th</option>
+                      <option value="10">10th</option>
+                      <option value="11">11th</option>
+                      <option value="12">12th</option>
+                      <option value="13">13th</option>
+                      <option value="14">14th</option>
+                      <option value="15">15th</option>
+                      <option value="16">16th</option>
+                      <option value="17">17th</option>
+                      <option value="18">18th</option>
+                      <option value="19">19th</option>
+                      <option value="20">20th</option>
+                      <option value="21">21st</option>
+                      <option value="22">22nd</option>
+                      <option value="23">23rd</option>
+                      <option value="24">24th</option>
+                      <option value="25">25th</option>
+                      <option value="26">26th</option>
+                      <option value="27">27th</option>
+                      <option value="28">28th</option>
+                      <option value="29">29th</option>
+                      <option value="30">30th</option>
+                    </select>
+                    <select id="season" name="season" required>
+                      <option value="" disabled selected>Select…</option>
+                      <option value="spring">Spring</option>
+                      <option value="summer">Summer</option>
+                      <option value="autumn">Autumn</option>
+                      <option value="winter">Winter</option>
+                    </select>
+                  </fieldset>
+                </form>
+              </div>
+
+              <div>
+                <h6>Grow until&hellip;</h6>
+                <select id="end" name="end" required>
+                  <option value="auto">(end of season)</option>
+                  <option value="spring">1st Spring</option>
+                  <option value="summer">1st Summer</option>
+                  <option value="autumn">1st Autumn</option>
+                  <option value="winter">1st Winter</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid">
+            <div>
+              <h6># of plots:</h6>
+              <input type="number" min="1" value="1" id="plots" name="plots" />
+            </div>
+
+            <div>
+              <h6>Pixie Boost:</h6>
+              <select id="pixies" name="pixies" required>
+                <option value="">none</option>
+                <option value="red">Red</option>
+                <option value="rainbow">Rainbow</option>
+              </select>
+            </div>
+
+            <div>
+              <h6>Gold per glass bottle:</h6>
+              <input type="number" min="0" max="100" value="10" id="bottle_cost" name="bottle_cost" />
+            </div>
+          </div>
+        </div>
+
+        <div class="grid">
+          <label>
+            <fieldset>
+              <legend><strong>Options</strong></legend>
+              <label for="greenhouse">
+                <input type="checkbox" id="greenhouse" name="greenhouse" role="switch" value="1" />
+                Greenhouse (i.e. ignore seasonal requirements)
+              </label>
+              <label for="free">
+                <input type="checkbox" id="free" name="free" role="switch" value="1" />
+                Assume seeds are free
+              </label>
+              <label for="repurchase">
+                <input type="checkbox" id="repurchase" name="repurchase" role="switch" value="1" checked />
+                Allow buying and planting more seeds for single-harvest crops
+              </label>
+              <label for="revenue">
+                <input type="checkbox" id="revenue" name="revenue" role="switch" value="1" />
+                Include raw and refined revenue columns
+              </label>
+            </fieldset>
+          </label>
+        </div>
+      </form>
+    </section>
+  </header>
+
+  <main class="container is-incomplete" id="table-container">
+    <section id="notice">
+      <h4>Start by selecting your current in-game day/season in the form above.</h4>
+    </section>
+
+    <section id="tables">
+      <h2>Results</h2>
+      <div class="overflow-auto">
+        <table class="striped" id="results">
+          <thead>
+            <tr class="borderless">
+              <th scope="col" colspan="4"></th>
+              <th scope="col" class="colgroup" colspan="4" id="raw-goods-header">Raw Goods</th>
+              <th scope="col" class="colgroup" colspan="4" id="refined-goods-header">Refined Goods</th>
+            </tr>
+            <tr class="sorters">
+              <th scope="col" class="name">Crop</th>
+              <th scope="col" class="stats">Stats</th>
+              <th scope="col" class="plantings">Plantings</th>
+              <th scope="col" class="harvests">Harvests</th>
+              <th scope="col" class="colgroup raw-costs">Costs</th>
+              <th scope="col" class="raw-units">Units</th>
+              <th scope="col" class="raw-revenue">Revenue</th>
+              <th scope="col" class="raw-income">Income</th>
+              <th scope="col" class="colgroup refined-costs">Costs</th>
+              <th scope="col" class="refined-units">Goods</th>
+              <th scope="col" class="refined-revenue">Revenue</th>
+              <th scope="col" class="refined-income">Income</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <h2>How to</h2>
+      <p>This app simulates planting and harvesting crops in Everafter Falls. It was built to answer
+        the oh-so common question &quot;well, it's the 23rd, what's most profitable on those 5 plots over there?&quot;.
+      </p>
+
+      <p>Configure your farming conditions in the form above.</p>
+
+      <dl>
+        <dt>Start Day/Season</dt>
+        <dd>The in-game date where you want to start farming. This is when you buy and plant the first round
+          of seeds. Depending on the options further down in the form, you can either just do a single planting
+          (let plants die and let the plots become empty) or allow to re-purchase more seeds and plant again.
+        </dd>
+        <dt>Grow until</dt>
+        <dd>The last date of your farming plan, i.e. the last possible harvest. For convenience since planning
+          a full season is so common, the dropdown is preselected to automatically grow until the end of the
+          starting season.
+        </dd>
+        <dt># of plots</dt>
+        <dd>Usually you won't just plant 1 plot, but a square number. To make the data easier to read, the app
+          can multiply the results for you by increasing the number of plots.
+        </dd>
+        <dt>Pixie Boost</dt>
+        <dd>Red and Rainbow Pixies can boost the efficiency of machines like the Churner or Food Refiner. If you
+          choose to refine your raw goods, set this to the Pixies you have on your machines to calculate the
+          correct income. Red Pixies double the output of a machine, Rainbox Pixies triple it. Pixies have no
+          effect on the raw harvest.
+        </dd>
+        <dt>Gold per glass bottle</dt>
+        <dd>Refining in the Churner / Fruit Press takes glass bottles in addition to the raw goods. There are
+          multiple ways to acquire such bottles and so depending on your method, they might be more or less
+          expensive to you. Use this input field to adjust your base cost.
+        </dd>
+        <dt>Assume seeds are free</dt>
+        <dd>Not all seeds can be bought for gold. Since this makes it difficult to calculate income and
+          in the later game machines exists to spawn seeds, this option can set the seed price for all
+          crops to zero, allowing to compare with &quot;irregular&quot; crops.
+        </dd>
+      </dl>
+
+      <p>How to read the results table:</p>
+
+      <dl>
+        <dt>Stats</dt>
+        <dd>In green you have the days until the plant is mature, in red you have the number of days after
+          which you can harvest again (if the plant can be harvested multiple times).
+        </dd>
+        <dt>Plantings</dt>
+        <dd>How often do you have to plant this crop in the chosen timeframe. This is always multiplied
+          with the number of plots.
+        </dd>
+        <dt>Harvests</dt>
+        <dd>How often can you harvest, also multiplied by the plot size.</dd>
+        <dt>Raw Goods / Refined Goods</dt>
+        <dd>The table first shows the numbers for the raw goods, then those for refined goods. It's assumed
+          you either perform refinement on all harvested goods, or none at all, i.e. if you see
+          &quot;raw goods: 25, refined: 5&quot;, this means you have <em>either</em> 25 raw goods <em>or</em>
+          5 refined ones.
+
+          <dl>
+            <dt>Costs</dt>
+            <dd>How much gold you had to spent to achieve this harvest. For raw goods, this is the
+              gold spent on seeds alone. For refined goods it's the sum of the seed costs plus the
+              costs for refining (meaning the cost for the bottles) since you have to spent both to
+              get the refined good.
+            </dd>
+            <dt>Units</dt>
+            <dd>How much items you have received. 1 tomato = 1 unit, for example, as is 1 bottle of soy milk.</dd>
+            <dt>Revenue</dt>
+            <dd>How much gold you earn from selling the goods. Since usually you only care about
+              the income (revenue minus costs), the revenue is hidden by default.
+            </dd>
+            <dt>Income</dt>
+            <dd>How much gold you earn after deducting all costs.</dd>
+          </dl>
+        </dd>
+      </dl>
+    </section>
+  </main>
+
+  <footer class="container">
+    <small>Built with <a href="https://picocss.com">Pico</a> •
+      <a href="https://github.com/picocss/examples/blob/master/v2-html/index.html">Source code</a></small>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
+  <script src="lib.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
